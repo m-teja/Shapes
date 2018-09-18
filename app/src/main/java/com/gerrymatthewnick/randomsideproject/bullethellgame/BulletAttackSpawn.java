@@ -15,5 +15,6 @@ public class BulletAttackSpawn {
     public void startSpawn() {
 
         BulletAttack1 bulletAttack1 = new BulletAttack1(con);
+        bulletAttack1.initAttack();
     }
 }

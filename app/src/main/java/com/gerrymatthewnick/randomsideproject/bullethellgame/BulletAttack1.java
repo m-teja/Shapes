@@ -11,7 +11,7 @@ public class BulletAttack1 {
     }
     public void initAttack() {
 
-        Bullet1 bullet1 = new Bullet1();
-        bullet1.init();
+        Bullet1 bullet1 = new Bullet1(con);
+        //bullet1.init();
     }
 }
