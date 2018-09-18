@@ -10,6 +10,9 @@ public class Projectile {
 
     public Handler moveImage = new Handler();
 
+    public int initialX;
+    public int initialY;
+
     public int velocity;
     public ImageView image;
     public Cursor cursor;
@@ -23,8 +26,8 @@ public class Projectile {
     public void setImage() {
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         image.setLayoutParams(lp);
-        image.setX(200);
-        image.setY(200);
+        image.setX(initialX);
+        image.setY(initialY);
         rl.addView(image);
 
     }
@@ -45,7 +48,7 @@ public class Projectile {
 
     }
     public void checkBounds() {
-        if (image.getY() > screenHeight/2) {
+        if (image.getY() > screenHeight) {
             delete();
         }
     }

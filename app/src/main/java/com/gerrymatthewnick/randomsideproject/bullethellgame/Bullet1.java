@@ -13,7 +13,10 @@ public class Bullet1 extends Projectile {
         super.cursor = cursor;
     }
 
-    public void init() {
+    public void init(int x, int y) {
+        initialX = x;
+        initialY = y;
+
         getScreenHeightWidth();
 
         //in the future, set this to support all rls
