@@ -7,7 +7,7 @@ import android.widget.ImageView;
 
 public class Cursor {
 
-    public final int cursorImageYDisplacement = 200;
+    public final int CURSOR_IMAGE_Y_DISPLACEMENT = 200;
 
     public Context con;
     public ImageView cursorImage;
@@ -21,7 +21,7 @@ public class Cursor {
     }
 
     public void setY(float y) {
-        cursorImage.setY(y - cursorImageYDisplacement);
+        cursorImage.setY(y - CURSOR_IMAGE_Y_DISPLACEMENT);
     }
 
     public void init() {

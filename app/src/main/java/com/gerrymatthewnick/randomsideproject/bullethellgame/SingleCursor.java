@@ -8,6 +8,7 @@ import android.widget.ImageView;
 public class SingleCursor extends AppCompatActivity {
 
     public Cursor cursor;
+    public BulletAttackSpawn bulletAttackSpawn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +17,8 @@ public class SingleCursor extends AppCompatActivity {
 
         cursor = new Cursor(this);
         cursor.init();
+
+        bulletAttackSpawn = new BulletAttackSpawn(this);
     }
 
     @Override
