@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void mainToOnePlayer(View view) {
-        Intent intent = new Intent(this, SinglePlayerChoose.class);
+        Intent intent = new Intent(this, SinglePlayerChooseActivity.class);
         startActivity(intent);
     }
 
