@@ -14,6 +14,6 @@ public class BulletAttack1 {
     public void initAttack() {
 
         Bullet1 bullet1 = new Bullet1(con, cursor);
-        bullet1.init();
+        bullet1.init();//put x and y here to make attack patterns
     }
 }

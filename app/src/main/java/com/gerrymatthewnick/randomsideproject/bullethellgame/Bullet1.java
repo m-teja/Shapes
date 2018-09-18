@@ -6,15 +6,15 @@ import android.widget.ImageView;
 
 public class Bullet1 extends Projectile {
 
-    Context con;
     public int bulletVelocity = 5;
 
     public Bullet1(Context con, Cursor cursor) {
-        this.con = con;
+        super.con = con;
         super.cursor = cursor;
     }
 
     public void init() {
+        getScreenHeightWidth();
 
         //in the future, set this to support all rls
         rl = ((Activity)con).findViewById(R.id.rlSingleCursor);
@@ -26,6 +26,11 @@ public class Bullet1 extends Projectile {
         super.velocity = bulletVelocity;
         startMove();
 
+    }
+
+    public void getScreenHeightWidth() {
+        screenWidth = con.getResources().getDisplayMetrics().widthPixels;
+        screenHeight = con.getResources().getDisplayMetrics().heightPixels;
     }
 }
 //TODO delete image after leaves screen
