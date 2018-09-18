@@ -1,8 +1,8 @@
 package com.gerrymatthewnick.randomsideproject.bullethellgame;
 
-public class Attack {
+public class Bullet1 extends Attack {
 
-    public void check() {
+    public void init() {
 
     }
 }

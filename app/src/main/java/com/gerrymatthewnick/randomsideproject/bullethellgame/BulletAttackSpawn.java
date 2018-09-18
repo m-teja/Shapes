@@ -11,7 +11,9 @@ public class BulletAttackSpawn {
         this.con = con;
     }
 
+    //periodically start different attack patterns
     public void startSpawn() {
 
+        BulletAttack1 bulletAttack1 = new BulletAttack1(con);
     }
 }
