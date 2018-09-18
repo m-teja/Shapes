@@ -16,6 +16,19 @@ public class Cursor {
         this.con = con;
     }
 
+
+    public ImageView getImage() {
+        return cursorImage;
+    }
+
+    public float getX() {
+        return cursorImage.getX();
+    }
+
+    public float getY() {
+        return cursorImage.getY();
+    }
+
     public void setX(float x) {
         cursorImage.setX(x);
     }

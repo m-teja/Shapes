@@ -2,6 +2,7 @@ package com.gerrymatthewnick.randomsideproject.bullethellgame;
 
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -39,7 +40,7 @@ public class Projectile {
             checkBounds();
             image.setY(image.getY() + velocity);
 
-            moveImage.postDelayed(moveRunnable, 10);
+            moveImage.postDelayed(moveRunnable, 20);
         }
     };
     //moves projectile by velocity
@@ -55,6 +56,15 @@ public class Projectile {
 
     //check if projectile is touching cursor
     public void checkCursor() {
+        Rect cursorRect = new Rect();
+        Rect projRect = new Rect();
+
+        cursor.getImage().getHitRect(cursorRect);
+        image.getHitRect(projRect);
+
+        if (cursorRect.intersect(projRect)) {
+            delete();
+        }
 
     }
 
