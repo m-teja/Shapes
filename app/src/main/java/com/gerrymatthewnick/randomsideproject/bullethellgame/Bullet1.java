@@ -6,16 +6,17 @@ import android.widget.ImageView;
 public class Bullet1 extends Projectile {
 
     Context con;
-    public ImageView bulletImage;
     public int bulletVelocity = 5;
 
-    public Bullet1 (Context con) {
+    public Bullet1(Context con, Cursor cursor) {
         this.con = con;
+        super.cursor = cursor;
     }
 
     public void init() {
-        bulletImage.setImageResource(con.getResources().getIdentifier("bullet1", "drawable", con.getPackageName()));
-        super.image = bulletImage;
+
+        super.image = new ImageView(con);
+        super.image.setImageResource(con.getResources().getIdentifier("bullet1", "drawable", con.getPackageName()));
         super.velocity = bulletVelocity;
 
 

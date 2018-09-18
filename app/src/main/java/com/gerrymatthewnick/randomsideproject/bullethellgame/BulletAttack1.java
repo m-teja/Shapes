@@ -5,13 +5,15 @@ import android.content.Context;
 public class BulletAttack1 {
 
     Context con;
+    Cursor cursor;
 
-    public BulletAttack1 (Context con) {
+    public BulletAttack1(Context con, Cursor cursor) {
         this.con = con;
+        this.cursor = cursor;
     }
     public void initAttack() {
 
-        Bullet1 bullet1 = new Bullet1(con);
-        //bullet1.init();
+        Bullet1 bullet1 = new Bullet1(con, cursor);
+        bullet1.init();
     }
 }

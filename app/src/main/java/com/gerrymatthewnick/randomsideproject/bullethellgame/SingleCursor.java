@@ -18,7 +18,7 @@ public class SingleCursor extends AppCompatActivity {
         cursor = new Cursor(this);
         cursor.init();
 
-        bulletAttackSpawn = new BulletAttackSpawn(this);
+        bulletAttackSpawn = new BulletAttackSpawn(this, cursor);
         bulletAttackSpawn.startSpawn();
     }
 

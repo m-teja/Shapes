@@ -10,9 +10,19 @@ public class Projectile {
 
     public int velocity;
     public ImageView image;
+    public Cursor cursor;
 
+
+    Runnable moveRunnable = new Runnable() {
+        @Override
+        public void run() {
+
+
+            moveImage.postDelayed(moveRunnable, 10);
+        }
+    };
     //moves projectile by velocity
-    public void move() {
+    public void startMove() {
 
     }
 
