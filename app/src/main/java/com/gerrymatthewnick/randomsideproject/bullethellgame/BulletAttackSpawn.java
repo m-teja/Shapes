@@ -3,6 +3,8 @@ package com.gerrymatthewnick.randomsideproject.bullethellgame;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern1.BulletAttack1;
+
 import static android.content.Context.MODE_PRIVATE;
 import static com.gerrymatthewnick.randomsideproject.bullethellgame.SingleCursor.PREFERENCES_SINGLE_CURSOR_ACTIVE;
 

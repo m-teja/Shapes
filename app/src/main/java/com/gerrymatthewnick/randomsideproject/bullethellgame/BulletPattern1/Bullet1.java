@@ -1,8 +1,12 @@
-package com.gerrymatthewnick.randomsideproject.bullethellgame;
+package com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern1;
 
 import android.app.Activity;
 import android.content.Context;
 import android.widget.ImageView;
+
+import com.gerrymatthewnick.randomsideproject.bullethellgame.Cursor;
+import com.gerrymatthewnick.randomsideproject.bullethellgame.Projectile;
+import com.gerrymatthewnick.randomsideproject.bullethellgame.R;
 
 public class Bullet1 extends Projectile {
 

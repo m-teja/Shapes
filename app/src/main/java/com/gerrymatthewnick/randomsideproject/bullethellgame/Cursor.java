@@ -73,3 +73,4 @@ public class Cursor {
     }
 
 }
+//TODO cursor still remains after death

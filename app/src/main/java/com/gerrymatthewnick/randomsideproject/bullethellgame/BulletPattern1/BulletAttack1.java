@@ -1,8 +1,11 @@
-package com.gerrymatthewnick.randomsideproject.bullethellgame;
+package com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern1;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
+
+import com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern1.Bullet1;
+import com.gerrymatthewnick.randomsideproject.bullethellgame.Cursor;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.gerrymatthewnick.randomsideproject.bullethellgame.SingleCursor.PREFERENCES_SINGLE_CURSOR_ACTIVE;
