@@ -1,11 +1,19 @@
 package com.gerrymatthewnick.randomsideproject.bullethellgame;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+
+import static android.content.Context.MODE_PRIVATE;
+import static com.gerrymatthewnick.randomsideproject.bullethellgame.SingleCursor.PREFERENCES_SINGLE_CURSOR_ACTIVE;
 
 public class BulletAttackSpawn {
 
+    public SharedPreferences singleCursorActive;
+
     public Context con;
     public Cursor cursor;
+
+
 
     public BulletAttackSpawn(Context con, Cursor cursor) {
         this.con = con;
@@ -15,7 +23,11 @@ public class BulletAttackSpawn {
     //periodically start different attack patterns
     public void startSpawn() {
 
-        BulletAttack1 bulletAttack1 = new BulletAttack1(con, cursor);
-        bulletAttack1.initAttack();
+        //Check if activity is still active
+        singleCursorActive = con.getSharedPreferences(PREFERENCES_SINGLE_CURSOR_ACTIVE, MODE_PRIVATE);
+        if (singleCursorActive.getBoolean("singleCursorActive", true)) {
+            BulletAttack1 bulletAttack1 = new BulletAttack1(con, cursor);
+            bulletAttack1.initAttack();
+        }
     }
 }

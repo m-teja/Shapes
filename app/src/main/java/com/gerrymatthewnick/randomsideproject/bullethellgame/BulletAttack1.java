@@ -1,15 +1,21 @@
 package com.gerrymatthewnick.randomsideproject.bullethellgame;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 
+import static android.content.Context.MODE_PRIVATE;
+import static com.gerrymatthewnick.randomsideproject.bullethellgame.SingleCursor.PREFERENCES_SINGLE_CURSOR_ACTIVE;
+
 public class BulletAttack1 {
+
+    public SharedPreferences singleCursorActive;
 
     public int screenWidth;
     public int screenHeight;
 
-    Context con;
-    Cursor cursor;
+    public Context con;
+    public Cursor cursor;
 
     public int attackReps = 0;
     public Handler attackDelay = new Handler();
@@ -19,6 +25,7 @@ public class BulletAttack1 {
         this.cursor = cursor;
     }
     public void initAttack() {
+        singleCursorActive = con.getSharedPreferences(PREFERENCES_SINGLE_CURSOR_ACTIVE, MODE_PRIVATE);
         getScreenHeightWidth();
         runnableAttack.run();
     }
@@ -36,7 +43,7 @@ public class BulletAttack1 {
 
             attackPattern();
 
-            if (attackReps < 100) {
+            if (attackReps < 100 && singleCursorActive.getBoolean("singleCursorActive", true)) {
                 attackDelay.postDelayed(runnableAttack, 500);
             }
             else {

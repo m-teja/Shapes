@@ -2,15 +2,20 @@ package com.gerrymatthewnick.randomsideproject.bullethellgame;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import static android.content.Context.MODE_PRIVATE;
+import static com.gerrymatthewnick.randomsideproject.bullethellgame.SingleCursor.PREFERENCES_SINGLE_CURSOR_ACTIVE;
+
 public class Projectile {
 
     public Handler moveImage = new Handler();
     public boolean active = true;
+    public SharedPreferences singleCursorActive;
 
     public int initialX;
     public int initialY;
@@ -41,7 +46,8 @@ public class Projectile {
             checkBounds();
             image.setY(image.getY() + velocity);
 
-            if (active) {
+            //Change this later for different activities
+            if (active && singleCursorActive.getBoolean("singleCursorActiveActivity", true)) {
                 moveImage.postDelayed(moveRunnable, 20);
             }
             else {
@@ -51,6 +57,7 @@ public class Projectile {
     };
     //moves projectile by velocity
     public void startMove() {
+        singleCursorActive = con.getSharedPreferences(PREFERENCES_SINGLE_CURSOR_ACTIVE, MODE_PRIVATE);
         moveRunnable.run();
 
     }

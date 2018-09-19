@@ -36,7 +36,6 @@ public class Bullet1 extends Projectile {
         screenHeight = con.getResources().getDisplayMetrics().heightPixels;
     }
 }
-//TODO delete image after leaves screen
 //TODO detect if activity is active
 //TODO check if image touches cursor
 //TODO fix second time playing crash
