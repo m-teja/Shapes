@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 public class Cursor {
 
     public final int CURSOR_IMAGE_Y_DISPLACEMENT = 200;
+    public int health = 100;
 
     public Context con;
     public ImageView cursorImage;
@@ -35,6 +37,19 @@ public class Cursor {
 
     public void setY(float y) {
         cursorImage.setY(y - CURSOR_IMAGE_Y_DISPLACEMENT);
+    }
+
+    public void takeDamage(int damage) {
+        health -= damage;
+
+        if (health <= 0) {
+            gameOver();
+        }
+    }
+
+    public void gameOver() {
+        RelativeLayout rl = ((Activity)con).findViewById(R.id.rlSingleCursor);
+        rl.removeView(cursorImage);
     }
 
     public void init() {

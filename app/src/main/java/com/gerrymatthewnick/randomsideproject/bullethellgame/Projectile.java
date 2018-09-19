@@ -21,6 +21,7 @@ public class Projectile {
     public int initialY;
 
     public int velocity;
+    public int damage;
     public ImageView image;
     public Cursor cursor;
 
@@ -77,6 +78,7 @@ public class Projectile {
 
         if (cursorRect.intersect(projRect)) {
             delete();
+            cursor.takeDamage(damage);
         }
 
     }

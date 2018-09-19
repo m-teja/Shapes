@@ -7,6 +7,7 @@ import android.widget.ImageView;
 public class Bullet1 extends Projectile {
 
     public int bulletVelocity = 10;
+    public int bulletDamage = 50;
 
     public Bullet1(Context con, Cursor cursor) {
         super.con = con;
@@ -27,6 +28,7 @@ public class Bullet1 extends Projectile {
 
         setImage();
         super.velocity = bulletVelocity;
+        super.damage = bulletDamage;
         startMove();
 
     }
@@ -36,6 +38,5 @@ public class Bullet1 extends Projectile {
         screenHeight = con.getResources().getDisplayMetrics().heightPixels;
     }
 }
-//TODO detect if activity is active
 //TODO check if image touches cursor
 //TODO fix second time playing crash
