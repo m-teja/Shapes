@@ -3,10 +3,14 @@ package com.gerrymatthewnick.randomsideproject.bullethellgame;
 import android.app.Activity;
 import android.content.Context;
 
+import android.content.Intent;
+import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 public class Cursor {
+
+    public Handler postGameDelay = new Handler();
 
     public final int CURSOR_IMAGE_Y_DISPLACEMENT = 200;
     public int health = 100;
@@ -47,9 +51,21 @@ public class Cursor {
         }
     }
 
+    Runnable runnableDelay = new Runnable() {
+        @Override
+        public void run() {
+            Intent intent = new Intent(con, PostGameScreen.class);
+            intent.putExtra("postGameValue", "Cursor wins");
+
+            con.startActivity(intent);
+        }
+    };
+
     public void gameOver() {
         RelativeLayout rl = ((Activity)con).findViewById(R.id.rlSingleCursor);
         rl.removeView(cursorImage);
+        //2 second delay before activity switch
+        postGameDelay.postDelayed(runnableDelay, 2000);
     }
 
     public void init() {

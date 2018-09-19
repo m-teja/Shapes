@@ -20,7 +20,8 @@
         <activity android:name=".TwoPlayerGame" />
         <activity android:name=".InstructionsActivity" />
         <activity android:name=".SingleBullet" />
-        <activity android:name=".SingleCursor"></activity>
+        <activity android:name=".SingleCursor" />
+        <activity android:name=".PostGameScreen"></activity>
     </application>
 
 </manifest>
