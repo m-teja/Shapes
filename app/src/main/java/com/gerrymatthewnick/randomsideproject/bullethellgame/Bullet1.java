@@ -6,7 +6,7 @@ import android.widget.ImageView;
 
 public class Bullet1 extends Projectile {
 
-    public int bulletVelocity = 5;
+    public int bulletVelocity = 10;
 
     public Bullet1(Context con, Cursor cursor) {
         super.con = con;
@@ -39,3 +39,4 @@ public class Bullet1 extends Projectile {
 //TODO delete image after leaves screen
 //TODO detect if activity is active
 //TODO check if image touches cursor
+//TODO fix second time playing crash

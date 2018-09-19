@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 public class Projectile {
 
     public Handler moveImage = new Handler();
+    public boolean active = true;
 
     public int initialX;
     public int initialY;
@@ -40,7 +41,12 @@ public class Projectile {
             checkBounds();
             image.setY(image.getY() + velocity);
 
-            moveImage.postDelayed(moveRunnable, 20);
+            if (active) {
+                moveImage.postDelayed(moveRunnable, 20);
+            }
+            else {
+                delete();
+            }
         }
     };
     //moves projectile by velocity
@@ -69,7 +75,10 @@ public class Projectile {
     }
 
     public void delete() {
+        active = false;
         moveImage.removeCallbacksAndMessages(null);
+        image.setImageBitmap(null);
         rl.removeView(image);
     }
+    //TODO fix memory leak
 }

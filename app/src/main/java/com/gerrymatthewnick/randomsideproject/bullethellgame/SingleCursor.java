@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
+import com.squareup.leakcanary.LeakCanary;
+
 public class SingleCursor extends AppCompatActivity {
 
     public Cursor cursor;
@@ -14,6 +16,13 @@ public class SingleCursor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_cursor);
+
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(getApplication());
 
         cursor = new Cursor(this);
         cursor.init();
