@@ -1,6 +1,7 @@
 package com.gerrymatthewnick.randomsideproject.bullethellgame;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.Log;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -21,6 +22,7 @@ public class Laser {
     public int yTop;
     public int yHeight;
 
+    Handler laserAppearDelay;
 
     public void setImage() {
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -33,7 +35,7 @@ public class Laser {
         image.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
         image.getLayoutParams().height = yHeight;
-        image.getLayoutParams().width = xWidth/10;
+        image.getLayoutParams().width = xWidth/5;
 
         //might need to draw rectangle
         rl.addView(image);
@@ -42,16 +44,40 @@ public class Laser {
 
     }
     public void imageSpawnAnimation() {
-        Animation anim = new AlphaAnimation((float)0.5, 0);
+        int repeatCount = 8;
+
+        Animation anim = new AlphaAnimation(0, (float)1.0);
         anim.setDuration(100);
         anim.setStartOffset(20);
         anim.setInterpolator(new LinearInterpolator());
         anim.setRepeatMode(Animation.REVERSE);
-        anim.setRepeatCount(10);
+        anim.setRepeatCount(repeatCount);
 
+        image.animate().setDuration(1500).withEndAction(new Runnable() {
+            @Override
+            public void run() {
+                laserAppearDelay = new Handler();
+
+                image.setAlpha((float)0.0);
+                image.getLayoutParams().width = xWidth;
+                laserAppearDelay.postDelayed(runnablePostSpawnAnimation, 1500);
+
+
+            }
+        }).start();
 
         image.startAnimation(anim);
     }
+
+    Runnable runnablePostSpawnAnimation = new Runnable() {
+        @Override
+        public void run() {
+
+            image.setAlpha((float)1.0);
+
+        }
+    };
+
 
 
 }
