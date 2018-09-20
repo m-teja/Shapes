@@ -28,7 +28,7 @@ public class LaserAttack1 {
         public void run() {
             Laser1 laser1 = new Laser1(con, cursor);
             //temporary x and y
-            laser1.init(100, 100, screenHeight);
+            laser1.init(100, 0, screenHeight);
         }
     };
 

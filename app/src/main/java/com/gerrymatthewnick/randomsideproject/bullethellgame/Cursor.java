@@ -55,7 +55,7 @@ public class Cursor {
         @Override
         public void run() {
             Intent intent = new Intent(con, PostGameScreen.class);
-            intent.putExtra("postGameValue", "Cursor wins");
+            intent.putExtra("postGameValue", "Bullets wins");
 
             con.startActivity(intent);
         }
