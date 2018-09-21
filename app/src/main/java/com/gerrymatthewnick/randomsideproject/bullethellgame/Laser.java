@@ -1,6 +1,7 @@
 package com.gerrymatthewnick.randomsideproject.bullethellgame;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.Handler;
 import android.util.Log;
@@ -10,10 +11,14 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import static android.content.Context.MODE_PRIVATE;
+import static com.gerrymatthewnick.randomsideproject.bullethellgame.SingleCursor.PREFERENCES_SINGLE_CURSOR_ACTIVE;
+
 public class Laser {
 
     public Context con;
     public RelativeLayout rl;
+    public SharedPreferences singleCursorActive;
 
     public boolean collide = false;
     public boolean active = true;
@@ -35,6 +40,8 @@ public class Laser {
     Handler deleteDelay;
 
     public void setImage() {
+        singleCursorActive = con.getSharedPreferences(PREFERENCES_SINGLE_CURSOR_ACTIVE, MODE_PRIVATE);
+
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         image.setLayoutParams(lp);
 
@@ -104,10 +111,8 @@ public class Laser {
         public void run() {
             checkCollision = new Handler();
 
-            Log.d("collide: ", Boolean.toString(collide));
-            Log.d("health", Integer.toString(cursor.health));
             checkCursor();
-            if (active) {
+            if (active && singleCursorActive.getBoolean("singleCursorActiveActivity", true)) {
                 checkCollision.postDelayed(runnableCheckCursor, damage);
             }
             else {

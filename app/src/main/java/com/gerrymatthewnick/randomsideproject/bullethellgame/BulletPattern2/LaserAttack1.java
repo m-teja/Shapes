@@ -33,7 +33,13 @@ public class LaserAttack1 {
 
             laser1.init((int)cursor.getX(), 0, screenHeight);
 
-            attackDelay.postDelayed(runnableAttack, 1000);
+            if (singleCursorActive.getBoolean("singleCursorActive", true)) {
+                attackDelay.postDelayed(runnableAttack, 1000);
+            }
+            else {
+                attackDelay.removeCallbacksAndMessages(null);
+            }
+
         }
     };
 

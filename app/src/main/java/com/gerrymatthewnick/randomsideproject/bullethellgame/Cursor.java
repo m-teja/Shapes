@@ -15,6 +15,7 @@ public class Cursor {
 
     public final int CURSOR_IMAGE_Y_DISPLACEMENT = 200;
     public int health = 100;
+    public boolean active;
 
     public Context con;
     public ImageView cursorImage;
@@ -65,15 +66,21 @@ public class Cursor {
     };
 
     public void gameOver() {
-        RelativeLayout rl = ((Activity)con).findViewById(R.id.rlSingleCursor);
-        rl.removeView(cursorImage);
-        //2 second delay before activity switch
-        postGameDelay.postDelayed(runnableDelay, 2000);
+
+        if (active) {
+            active = false;
+            RelativeLayout rl = ((Activity)con).findViewById(R.id.rlSingleCursor);
+            rl.removeView(cursorImage);
+            //2 second delay before activity switch
+            postGameDelay.postDelayed(runnableDelay, 2000);
+        }
+
     }
 
     public void init() {
         cursorImage = ((Activity)con).findViewById(R.id.cursor);
         healthbar = ((Activity)con).findViewById(R.id.healthBar);
+        active = true;
     }
 
 }
