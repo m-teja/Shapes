@@ -13,6 +13,7 @@ import static com.gerrymatthewnick.randomsideproject.bullethellgame.SingleCursor
 public class LaserAttack2 {
 
     public SharedPreferences singleCursorActive;
+    public boolean active;
 
     public Context con;
     public Cursor cursor;
@@ -21,16 +22,26 @@ public class LaserAttack2 {
     public int screenHeight;
 
     public Handler attackDelay = new Handler();
+    public Handler stopDelay = new Handler();
 
     public LaserAttack2(Context con, Cursor cursor) {
         this.con = con;
         this.cursor = cursor;
     }
 
+    public void stop() {
+        active = false;
+    }
+
+    Runnable runnableStop = new Runnable() {
+        @Override
+        public void run() {
+            stop();
+        }
+    };
+
     private Runnable runnableAttack = new Runnable() {
         int placement;
-
-
         @Override
         public void run() {
             int previous = placement;
@@ -45,7 +56,7 @@ public class LaserAttack2 {
             Log.d("test", Integer.toString(placement));
             laser2.init(placement, 0, screenWidth, screenHeight);
 
-            if (singleCursorActive.getBoolean("singleCursorActive", true)) {
+            if (active && singleCursorActive.getBoolean("singleCursorActive", true)) {
                 attackDelay.postDelayed(runnableAttack, 1000);
             }
             else {
@@ -82,9 +93,13 @@ public class LaserAttack2 {
     }
 
     public void initAttack() {
+        active = true;
+
         singleCursorActive = con.getSharedPreferences(PREFERENCES_SINGLE_CURSOR_ACTIVE, MODE_PRIVATE);
         getScreenHeightWidth();
         runnableAttack.run();
+
+        stopDelay.postDelayed(runnableStop, 10000);
     }
 
     public void getScreenHeightWidth() {

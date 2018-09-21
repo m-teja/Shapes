@@ -13,6 +13,7 @@ import static com.gerrymatthewnick.randomsideproject.bullethellgame.SingleCursor
 public class BulletAttack1 {
 
     public SharedPreferences singleCursorActive;
+    public boolean active;
 
     public int screenWidth;
     public int screenHeight;
@@ -20,18 +21,25 @@ public class BulletAttack1 {
     public Context con;
     public Cursor cursor;
 
-    public int attackReps = 0;
     public Handler attackDelay = new Handler();
+    public Handler stopDelay = new Handler();
 
     public BulletAttack1(Context con, Cursor cursor) {
         this.con = con;
         this.cursor = cursor;
     }
     public void initAttack() {
+        active = true;
         singleCursorActive = con.getSharedPreferences(PREFERENCES_SINGLE_CURSOR_ACTIVE, MODE_PRIVATE);
         getScreenHeightWidth();
         runnableAttack.run();
+
+        stopDelay.postDelayed(runnableStop, 10000);
     }
+    public void stop() {
+        active = false;
+    }
+
     public void attackPattern() {
         for (int i = 1; i < 4; i++) {
             Bullet1 bullet1 = new Bullet1(con, cursor);
@@ -39,14 +47,20 @@ public class BulletAttack1 {
         }
     }
 
+    Runnable runnableStop = new Runnable() {
+        @Override
+        public void run() {
+            stop();
+        }
+    };
+
     Runnable runnableAttack = new Runnable() {
         @Override
         public void run() {
-            attackReps++;
-
+            
             attackPattern();
 
-            if (attackReps < 100 && singleCursorActive.getBoolean("singleCursorActive", true)) {
+            if (active && singleCursorActive.getBoolean("singleCursorActive", true)) {
                 attackDelay.postDelayed(runnableAttack, 500);
             }
             else {
