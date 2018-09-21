@@ -63,7 +63,7 @@ public class Laser {
     public void imageSpawnAnimation() {
         int repeatCount = 8;
 
-        Animation anim = new AlphaAnimation(0, (float)1.0);
+        Animation anim = new AlphaAnimation(0, (float)0.5);
         anim.setDuration(100);
         anim.setStartOffset(20);
         anim.setInterpolator(new LinearInterpolator());
