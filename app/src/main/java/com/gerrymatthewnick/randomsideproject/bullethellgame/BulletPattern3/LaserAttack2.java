@@ -1,4 +1,4 @@
-package com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern2;
+package com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern3;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,7 +9,7 @@ import com.gerrymatthewnick.randomsideproject.bullethellgame.Cursor;
 import static android.content.Context.MODE_PRIVATE;
 import static com.gerrymatthewnick.randomsideproject.bullethellgame.SingleCursor.PREFERENCES_SINGLE_CURSOR_ACTIVE;
 
-public class LaserAttack1 {
+public class LaserAttack2 {
 
     public SharedPreferences singleCursorActive;
 
@@ -21,7 +21,7 @@ public class LaserAttack1 {
 
     public Handler attackDelay = new Handler();
 
-    public LaserAttack1(Context con, Cursor cursor) {
+    public LaserAttack2(Context con, Cursor cursor) {
         this.con = con;
         this.cursor = cursor;
     }
@@ -29,16 +29,11 @@ public class LaserAttack1 {
     private Runnable runnableAttack = new Runnable() {
         @Override
         public void run() {
-            Laser1 laser1 = new Laser1(con, cursor);
+            Laser2 laser2 = new Laser2(con, cursor);
 
-            laser1.init((int)cursor.getX() + (cursor.CURSOR_WIDTH/2), 0, screenHeight);
+            laser2.init(screenWidth/8, 0, screenWidth, screenHeight);
 
-            if (singleCursorActive.getBoolean("singleCursorActive", true)) {
-                attackDelay.postDelayed(runnableAttack, 1000);
-            }
-            else {
-                attackDelay.removeCallbacksAndMessages(null);
-            }
+            //if (singleCursorActive.getBoolean("singleCursorActive", true)) {
 
         }
     };

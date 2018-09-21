@@ -89,5 +89,5 @@ public class Projectile {
         image.setImageBitmap(null);
         rl.removeView(image);
     }
-    //TODO fix memory leak
+
 }

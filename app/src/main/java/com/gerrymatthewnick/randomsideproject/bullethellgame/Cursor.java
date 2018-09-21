@@ -14,6 +14,7 @@ public class Cursor {
     public Handler postGameDelay = new Handler();
 
     public final int CURSOR_IMAGE_Y_DISPLACEMENT = 200;
+    public final int CURSOR_WIDTH = 32;
     public int health = 100;
     public boolean active;
 
@@ -24,7 +25,6 @@ public class Cursor {
     public Cursor (Context con) {
         this.con = con;
     }
-
 
     public ImageView getImage() {
         return cursorImage;
@@ -84,4 +84,3 @@ public class Cursor {
     }
 
 }
-//TODO cursor still remains after death

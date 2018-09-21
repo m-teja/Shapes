@@ -42,5 +42,3 @@ public class Bullet1 extends Projectile {
         screenHeight = con.getResources().getDisplayMetrics().heightPixels;
     }
 }
-//TODO check if image touches cursor
-//TODO fix second time playing crash
