@@ -2,7 +2,6 @@ package com.gerrymatthewnick.randomsideproject.bullethellgame;
 
 import android.content.Context;
 import android.os.Handler;
-import android.util.Log;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
@@ -22,7 +21,11 @@ public class Laser {
     public int yTop;
     public int yHeight;
 
+    public int warningDuration;
+    public int duration;
+
     Handler laserAppearDelay;
+    Handler deleteDelay;
 
     public void setImage() {
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -53,14 +56,15 @@ public class Laser {
         anim.setRepeatMode(Animation.REVERSE);
         anim.setRepeatCount(repeatCount);
 
-        image.animate().setDuration(1500).withEndAction(new Runnable() {
+        image.animate().setDuration(warningDuration /4 * 3).withEndAction(new Runnable() {
             @Override
             public void run() {
                 laserAppearDelay = new Handler();
 
                 image.setAlpha((float)0.0);
                 image.getLayoutParams().width = xWidth;
-                laserAppearDelay.postDelayed(runnablePostSpawnAnimation, 1500);
+                image.setX(image.getX() - xWidth/2);
+                laserAppearDelay.postDelayed(runnablePostSpawnAnimation, warningDuration /4);
 
 
             }
@@ -69,12 +73,21 @@ public class Laser {
         image.startAnimation(anim);
     }
 
-    Runnable runnablePostSpawnAnimation = new Runnable() {
+    private Runnable runnablePostSpawnAnimation = new Runnable() {
         @Override
         public void run() {
+            deleteDelay = new Handler();
 
             image.setAlpha((float)1.0);
+            deleteDelay.postDelayed(runnableDeleteLaser, duration);
+        }
+    };
 
+    private Runnable runnableDeleteLaser = new Runnable() {
+        @Override
+        public void run() {
+            image.setImageBitmap(null);
+            rl.removeView(image);
         }
     };
 
