@@ -57,7 +57,7 @@ public class BulletAttack1 {
     Runnable runnableAttack = new Runnable() {
         @Override
         public void run() {
-            
+
             attackPattern();
 
             if (active && singleCursorActive.getBoolean("singleCursorActive", true)) {

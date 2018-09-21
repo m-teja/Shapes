@@ -87,22 +87,25 @@ public class SingleCursor extends AppCompatActivity {
     //Detect when activity stops and starts and sets collide to true or false
     @Override
     public void onStart() {
-        super.onStart();
+
         activeEditor.putBoolean("singleCursorActive", true);
         activeEditor.apply();
+        super.onStart();
     }
 
     @Override
     public void onStop() {
-        super.onStop();
+
         activeEditor.putBoolean("singleCursorActive", false);
         activeEditor.apply();
+        super.onStop();
     }
 
     @Override
     public void onPause() {
-        super.onPause();
+
         activeEditor.putBoolean("singleCursorActive", false);
         activeEditor.apply();
+        super.onPause();
     }
 }

@@ -19,6 +19,7 @@ public class BulletAttackSpawn {
     public Cursor cursor;
 
     public Handler attackSwitchDelay;
+    public Handler checkDelay;
 
     int first;
     int second;
@@ -70,16 +71,34 @@ public class BulletAttackSpawn {
         }
     };
 
+    Runnable checkActive = new Runnable() {
+        @Override
+        public void run() {
+
+            if (singleCursorActive.getBoolean("singleCursorActive", true)) {
+                checkDelay.postDelayed(checkActive, 500);
+            }
+            else {
+                checkDelay.removeCallbacksAndMessages(null);
+                attackSwitchDelay.removeCallbacksAndMessages(null);
+            }
+
+
+        }
+    };
+
     //periodically start different attack patterns
     public void startSpawn() {
+
 
         //Check if activity is still collide
         singleCursorActive = con.getSharedPreferences(PREFERENCES_SINGLE_CURSOR_ACTIVE, MODE_PRIVATE);
 
         attackSwitchDelay = new Handler();
-
         runnableRepeatAttacks.run();
 
+        checkDelay = new Handler();
+        checkActive.run();
     }
 }
 //TODO make a timed attack program
