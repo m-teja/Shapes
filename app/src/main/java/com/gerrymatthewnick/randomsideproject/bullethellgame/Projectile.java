@@ -40,7 +40,7 @@ public class Projectile {
 
     }
 
-    Runnable moveRunnable = new Runnable() {
+    private Runnable moveRunnable = new Runnable() {
         @Override
         public void run() {
             checkCursor();

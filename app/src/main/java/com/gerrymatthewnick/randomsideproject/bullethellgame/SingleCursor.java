@@ -33,7 +33,7 @@ public class SingleCursor extends AppCompatActivity {
         active = getSharedPreferences(PREFERENCES_SINGLE_CURSOR_ACTIVE, MODE_PRIVATE);
         activeEditor = active.edit();
 
-        //Sets the activity as active
+        //Sets the activity as collide
         setActive();
 
         //Spawns cursor
@@ -84,7 +84,7 @@ public class SingleCursor extends AppCompatActivity {
     }
 
 
-    //Detect when activity stops and starts and sets active to true or false
+    //Detect when activity stops and starts and sets collide to true or false
     @Override
     public void onStart() {
         super.onStart();

@@ -1,7 +1,9 @@
 package com.gerrymatthewnick.randomsideproject.bullethellgame;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.os.Handler;
+import android.util.Log;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
@@ -12,6 +14,10 @@ public class Laser {
 
     public Context con;
     public RelativeLayout rl;
+
+    public boolean collide = false;
+    public boolean active = true;
+    public int damage;
 
     public ImageView image;
     public Cursor cursor;
@@ -24,6 +30,7 @@ public class Laser {
     public int warningDuration;
     public int duration;
 
+    Handler checkCollision;
     Handler laserAppearDelay;
     Handler deleteDelay;
 
@@ -78,6 +85,8 @@ public class Laser {
         public void run() {
             deleteDelay = new Handler();
 
+            runnableCheckCursor.run();
+            collide = true;
             image.setAlpha((float)1.0);
             deleteDelay.postDelayed(runnableDeleteLaser, duration);
         }
@@ -86,10 +95,47 @@ public class Laser {
     private Runnable runnableDeleteLaser = new Runnable() {
         @Override
         public void run() {
-            image.setImageBitmap(null);
-            rl.removeView(image);
+            delete();
         }
     };
+
+    private Runnable runnableCheckCursor = new Runnable() {
+        @Override
+        public void run() {
+            checkCollision = new Handler();
+
+            Log.d("collide: ", Boolean.toString(collide));
+            Log.d("health", Integer.toString(cursor.health));
+            checkCursor();
+            if (active) {
+                checkCollision.postDelayed(runnableCheckCursor, damage);
+            }
+            else {
+                delete();
+            }
+        }
+    };
+
+    public void delete() {
+        collide = false;
+        image.setImageBitmap(null);
+        rl.removeView(image);
+        checkCollision.removeCallbacksAndMessages(null);
+    }
+
+
+    public void checkCursor() {
+        Rect cursorRect = new Rect();
+        Rect laserRect = new Rect();
+
+        cursor.getImage().getHitRect(cursorRect);
+        image.getHitRect(laserRect);
+
+        if (cursorRect.intersect(laserRect) && collide) {
+            cursor.takeDamage(damage);
+        }
+
+    }
 
 
 

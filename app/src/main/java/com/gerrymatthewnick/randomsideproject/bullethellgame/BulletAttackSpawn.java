@@ -26,7 +26,7 @@ public class BulletAttackSpawn {
     //periodically start different attack patterns
     public void startSpawn() {
 
-        //Check if activity is still active
+        //Check if activity is still collide
         singleCursorActive = con.getSharedPreferences(PREFERENCES_SINGLE_CURSOR_ACTIVE, MODE_PRIVATE);
         if (singleCursorActive.getBoolean("singleCursorActive", true)) {
             BulletAttack1 bulletAttack1 = new BulletAttack1(con, cursor);
