@@ -12,7 +12,7 @@ public class Laser2 extends Laser {
 
     public int width = 0;
     public final int WARNING_DURATION = 2000;
-    public final int DURATION = 1200;
+    public final int DURATION = 2000;
     public final int DAMAGE= 1;
 
     public Laser2 (Context con, Cursor cursor) {

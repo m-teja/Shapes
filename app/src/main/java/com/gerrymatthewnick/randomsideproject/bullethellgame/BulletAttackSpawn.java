@@ -32,12 +32,12 @@ public class BulletAttackSpawn {
         if (singleCursorActive.getBoolean("singleCursorActive", true)) {
 
             //randomly placed bullets
-            BulletAttack1 bulletAttack1 = new BulletAttack1(con, cursor);
-            bulletAttack1.initAttack();
+           // BulletAttack1 bulletAttack1 = new BulletAttack1(con, cursor);
+          //  bulletAttack1.initAttack();
 
             //tracking lasers
-            LaserAttack1 laserAttack1 = new LaserAttack1(con, cursor);
-            laserAttack1.initAttack();
+        //    LaserAttack1 laserAttack1 = new LaserAttack1(con, cursor);
+         //   laserAttack1.initAttack();
 
             // 1/4 screen width lasers
             LaserAttack2 laserAttack2 = new LaserAttack2(con, cursor);
