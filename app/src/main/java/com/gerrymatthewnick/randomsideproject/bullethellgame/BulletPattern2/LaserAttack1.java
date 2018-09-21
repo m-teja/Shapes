@@ -2,6 +2,7 @@ package com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern2;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Handler;
 
 import com.gerrymatthewnick.randomsideproject.bullethellgame.Cursor;
 
@@ -18,17 +19,21 @@ public class LaserAttack1 {
     public int screenWidth;
     public int screenHeight;
 
+    public Handler attackDelay = new Handler();
+
     public LaserAttack1(Context con, Cursor cursor) {
         this.con = con;
         this.cursor = cursor;
     }
 
-    Runnable runnableAttack = new Runnable() {
+    private Runnable runnableAttack = new Runnable() {
         @Override
         public void run() {
             Laser1 laser1 = new Laser1(con, cursor);
-            //temporary x and y
-            laser1.init(100, 0, screenHeight);
+
+            laser1.init((int)cursor.getX(), 0, screenHeight);
+
+            attackDelay.postDelayed(runnableAttack, 1000);
         }
     };
 
@@ -43,3 +48,4 @@ public class LaserAttack1 {
         screenHeight = con.getResources().getDisplayMetrics().heightPixels;
     }
 }
+//TODO detect when activity is active
