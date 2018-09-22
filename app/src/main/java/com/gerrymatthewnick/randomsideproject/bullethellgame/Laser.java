@@ -78,7 +78,6 @@ public class Laser {
 
                 image.setAlpha((float)0.0);
                 image.getLayoutParams().width = xWidth;
-                //image.setX(image.getX() - xWidth/2);
                 laserAppearDelay.postDelayed(runnablePostSpawnAnimation, warningDuration /4);
 
 
@@ -146,3 +145,4 @@ public class Laser {
 
 
 }
+//TODO remake code so it lasers go towards a position for horizontal and etc

@@ -1,7 +1,9 @@
 package com.gerrymatthewnick.randomsideproject.bullethellgame;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class PostGameScreen extends AppCompatActivity {
@@ -18,7 +20,6 @@ public class PostGameScreen extends AppCompatActivity {
         getValues();
     }
 
-
     public void getValues() {
         Bundle extras = getIntent().getExtras();
 
@@ -34,4 +35,20 @@ public class PostGameScreen extends AppCompatActivity {
         TextView postTimeDisplay = findViewById(R.id.postTimeDisplay);
         postTimeDisplay.setText("Time lasted: " + timeLasted);
     }
+
+    public void postToSingleCursor(View view) {
+        Intent intent = new Intent(this, SingleCursor.class);
+        startActivity(intent);
+    }
+
+    public void postToMain(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        //Prevent back press
+    }
 }
+//TODO bug when play again is pressed fast

@@ -46,7 +46,7 @@ public class Projectile {
             checkCursor();
             checkBounds();
             image.setY(image.getY() + velocity);
-
+//TODO do something so it goes towards a specific position
             //Change this later for different activities
             if (active && singleCursorActive.getBoolean("singleCursorActiveActivity", true)) {
                 moveImage.postDelayed(moveRunnable, 20);
