@@ -5,7 +5,9 @@ import android.content.Context;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v4.view.ViewCompat;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -13,13 +15,14 @@ import android.widget.RelativeLayout;
 public class Cursor {
 
     public Handler postGameDelay = new Handler();
+    public Chronometer timer;
 
     public final int CURSOR_IMAGE_Y_DISPLACEMENT = 200;
     public final int CURSOR_WIDTH = 32;
     public int health = 1000;
     public boolean active;
 
-    ImageView background;
+    public ImageView background;
     public int screenWidth;
     public int screenHeight;
 
@@ -88,8 +91,11 @@ public class Cursor {
     Runnable runnableDelay = new Runnable() {
         @Override
         public void run() {
+            int elapsedMillis = (int) (SystemClock.elapsedRealtime() - timer.getBase());
+
             Intent intent = new Intent(con, PostGameScreen.class);
             intent.putExtra("postGameValue", "Bullets wins");
+            intent.putExtra("time", elapsedMillis);
 
             con.startActivity(intent);
         }
@@ -99,6 +105,8 @@ public class Cursor {
 
         if (active) {
             active = false;
+            timer.stop();
+
             RelativeLayout rl = ((Activity)con).findViewById(R.id.rlSingleCursor);
             rl.removeView(cursorImage);
             //2 second delay before activity switch
@@ -111,11 +119,12 @@ public class Cursor {
         getScreenHeightWidth();
         cursorImage = ((Activity)con).findViewById(R.id.cursor);
         initBackground();
-
-
+        timer = new Chronometer(con);
+        timer.start();
 
         healthbar = ((Activity)con).findViewById(R.id.healthBar);
         active = true;
     }
 
 }
+//TODO add cursor die animation

@@ -6,7 +6,9 @@ import android.widget.TextView;
 
 public class PostGameScreen extends AppCompatActivity {
 
-    String postGameMessage;
+    private String postGameMessage;
+    private float time;
+    private String timeLasted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +24,14 @@ public class PostGameScreen extends AppCompatActivity {
 
         if (extras != null) {
             postGameMessage = extras.getString("postGameValue");
+            time = (float)extras.getInt("time")/1000;
+            timeLasted = Float.toString(time);
         }
 
         TextView postGameDisplay = findViewById(R.id.postGameDisplay);
         postGameDisplay.setText(postGameMessage);
+
+        TextView postTimeDisplay = findViewById(R.id.postTimeDisplay);
+        postTimeDisplay.setText("Time lasted: " + timeLasted);
     }
 }
