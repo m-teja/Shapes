@@ -18,7 +18,7 @@ public class Bullet1 extends Projectile {
         super.cursor = cursor;
     }
 
-    public void init(int x, int y) {
+    public void init(int x, int y, int destinationX, int destinationY) {
         initialX = x;
         initialY = y;
 
@@ -33,6 +33,9 @@ public class Bullet1 extends Projectile {
         setImage();
         super.velocity = bulletVelocity;
         super.damage = bulletDamage;
+
+        super.destinationX = destinationX;
+        super.destinationY = destinationY;
         startMove();
 
     }

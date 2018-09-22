@@ -19,6 +19,10 @@ public class Projectile {
 
     public int initialX;
     public int initialY;
+    public int destinationX;
+    public int destinationY;
+    public float currentVelocityX;
+    public float currentVelocityY;
 
     public int velocity;
     public int damage;
@@ -40,12 +44,35 @@ public class Projectile {
 
     }
 
+    public void calcDifference() {
+
+        float currentX = image.getX();
+        float currentY = image.getY();
+
+        float differenceX = destinationX - currentX;
+        float differenceY = destinationY - currentY;
+
+        float differenceXY = (float)Math.sqrt( Math.pow((differenceY), 2) + Math.pow((differenceX), 2));
+
+        float cosAngle = (float)Math.acos(differenceY/differenceXY);
+
+        currentVelocityY = (float)(Math.cos(cosAngle) * velocity);
+        currentVelocityX = (float)(Math.sin(cosAngle) * velocity);
+    }
+
     private Runnable moveRunnable = new Runnable() {
         @Override
         public void run() {
+            calcDifference();
+
             checkCursor();
             checkBounds();
-            image.setY(image.getY() + velocity);
+            image.setY(image.getY() + currentVelocityY);
+            image.setX(image.getX() + currentVelocityX);
+
+
+
+
 //TODO do something so it goes towards a specific position
             //Change this later for different activities
             if (active && singleCursorActive.getBoolean("singleCursorActiveActivity", true)) {
