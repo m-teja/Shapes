@@ -34,6 +34,7 @@ public class Laser {
 
     public int warningDuration;
     public int duration;
+    public int warningWidth;
 
     Handler checkCollision;
     Handler laserAppearDelay;
@@ -45,14 +46,14 @@ public class Laser {
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         image.setLayoutParams(lp);
 
-        image.setX(xLeft);
+        image.setX(xLeft - warningWidth/2);
         image.setY(yTop);
 
         image.setAdjustViewBounds(true);
         image.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
         image.getLayoutParams().height = yHeight;
-        image.getLayoutParams().width = xWidth/5;
+        image.getLayoutParams().width = warningWidth;
 
         //might need to draw rectangle
         rl.addView(image);
@@ -77,7 +78,7 @@ public class Laser {
 
                 image.setAlpha((float)0.0);
                 image.getLayoutParams().width = xWidth;
-                image.setX(image.getX() - xWidth/2);
+                //image.setX(image.getX() - xWidth/2);
                 laserAppearDelay.postDelayed(runnablePostSpawnAnimation, warningDuration /4);
 
 

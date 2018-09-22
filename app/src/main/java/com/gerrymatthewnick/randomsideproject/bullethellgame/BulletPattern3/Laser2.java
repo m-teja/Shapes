@@ -11,6 +11,7 @@ import com.gerrymatthewnick.randomsideproject.bullethellgame.R;
 public class Laser2 extends Laser {
 
     public int width = 0;
+    public int warningWidth = 0;
     public final int WARNING_DURATION = 2000;
     public final int DURATION = 1800;
     public final int DAMAGE= 20;
@@ -23,6 +24,7 @@ public class Laser2 extends Laser {
     public void init(int xStart, int yStart, int screenWidth, int screenHeight) {
 
         width = screenWidth/4;
+        warningWidth = screenWidth/4;
 
         super.image = new ImageView(con);
         super.image.setImageResource(con.getResources().getIdentifier("laser2", "drawable", con.getPackageName()));
@@ -33,6 +35,7 @@ public class Laser2 extends Laser {
 
         super.xLeft = xStart;
         super.xWidth = width;
+        super.warningWidth = warningWidth;
         super.yTop = yStart;
         super.yHeight = screenHeight;
         super.rl = ((Activity)con).findViewById(R.id.rlSingleCursor);

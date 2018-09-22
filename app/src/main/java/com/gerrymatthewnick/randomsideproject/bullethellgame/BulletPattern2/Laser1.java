@@ -11,6 +11,7 @@ import com.gerrymatthewnick.randomsideproject.bullethellgame.R;
 public class Laser1 extends Laser {
 
     public final int WIDTH = 25;
+    public final int WARNING_WIDTH = 5;
     public final int WARNING_DURATION = 2000;
     public final int DURATION = 1200;
     public final int DAMAGE= 10;
@@ -28,6 +29,7 @@ public class Laser1 extends Laser {
         super.warningDuration = WARNING_DURATION;
         super.duration = DURATION;
         super.damage = DAMAGE;
+        super.warningWidth = WARNING_WIDTH;
 
         super.xLeft = xStart;
         super.xWidth = WIDTH;
