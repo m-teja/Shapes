@@ -7,6 +7,7 @@ import android.os.Handler;
 import com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern1.BulletAttack1;
 import com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern2.LaserAttack1;
 import com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern3.LaserAttack2;
+import com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern4.BulletAttack2;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.gerrymatthewnick.randomsideproject.bullethellgame.SingleCursor.PREFERENCES_SINGLE_CURSOR_ACTIVE;
@@ -33,7 +34,7 @@ public class BulletAttackSpawn {
         int choice;
 
         do{
-            choice = (int)Math.floor(Math.random() * 3);
+            choice = (int)Math.floor(Math.random() * 4);
         }
         while (first == choice);
 
@@ -44,21 +45,29 @@ public class BulletAttackSpawn {
         @Override
         public void run() {
 
-            BulletAttack1 bulletAttack1 = new BulletAttack1(con, cursor);
-            LaserAttack1 laserAttack1 = new LaserAttack1(con, cursor);
-            LaserAttack2 laserAttack2 = new LaserAttack2(con, cursor);
+            BulletAttack1 bulletAttack1;
+            BulletAttack2 bulletAttack2;
+            LaserAttack1 laserAttack1;
+            LaserAttack2 laserAttack2;
 
             first = choose();
             second = choose();
 
             if (first == 0 || second == 0) {
+                bulletAttack1 = new BulletAttack1(con, cursor);
                 bulletAttack1.initAttack();
             }
             if (first == 1 || second == 1) {
+                laserAttack1 = new LaserAttack1(con, cursor);
                 laserAttack1.initAttack();
             }
             if (first == 2 || second == 2) {
+                laserAttack2 = new LaserAttack2(con, cursor);
                 laserAttack2.initAttack();
+            }
+            if (first == 3 || second == 3) {
+                bulletAttack2 = new BulletAttack2(con, cursor);
+                bulletAttack2.initAttack();
             }
 
 
