@@ -5,6 +5,7 @@ import android.content.Context;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.support.v4.view.ViewCompat;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -49,6 +50,7 @@ public class Cursor {
     public void takeDamage(int damage) {
         health -= damage;
 
+        healthbar.bringToFront();
         healthbar.setProgress(healthbar.getProgress() - damage);
         if (health <= 0) {
             gameOver();
@@ -81,7 +83,6 @@ public class Cursor {
         cursorImage = ((Activity)con).findViewById(R.id.cursor);
 
         healthbar = ((Activity)con).findViewById(R.id.healthBar);
-        healthbar.bringToFront();
         active = true;
     }
 

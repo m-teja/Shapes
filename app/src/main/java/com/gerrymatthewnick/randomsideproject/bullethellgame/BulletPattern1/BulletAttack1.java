@@ -43,7 +43,7 @@ public class BulletAttack1 {
     public void attackPattern() {
         for (int i = 1; i < 4; i++) {
             Bullet1 bullet1 = new Bullet1(con, cursor);
-            bullet1.init((int)(((screenWidth/3) * i * Math.random()) + 50), 100);//put x and y here to make attack patterns
+            bullet1.init((int)(((screenWidth/3) * i * Math.random()) + 50), 0);//put x and y here to make attack patterns
         }
     }
 
