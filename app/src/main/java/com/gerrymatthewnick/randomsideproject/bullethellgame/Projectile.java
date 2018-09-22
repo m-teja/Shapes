@@ -24,6 +24,7 @@ public class Projectile {
     public int destinationY;
     public float currentVelocityX;
     public float currentVelocityY;
+    public boolean trackCursor = false;
 
     public int velocity;
     public int damage;
@@ -50,8 +51,17 @@ public class Projectile {
         float currentX = image.getX();
         float currentY = image.getY();
 
-        float differenceX = cursor.getX() - currentX;
-        float differenceY = cursor.getY() - currentY;
+        float differenceX;
+        float differenceY;
+
+        if (trackCursor) {
+            differenceX = cursor.getX() - currentX;
+            differenceY = cursor.getY() - currentY;
+        }
+        else {
+            differenceX = destinationX - currentX;
+            differenceY = destinationY - currentY;
+        }
 
         float differenceXY = (float)Math.sqrt( Math.pow((differenceY), 2) + Math.pow((differenceX), 2));
 
