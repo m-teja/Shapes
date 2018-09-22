@@ -12,8 +12,8 @@ public class Laser2 extends Laser {
 
     public int width = 0;
     public final int WARNING_DURATION = 2000;
-    public final int DURATION = 2000;
-    public final int DAMAGE= 1;
+    public final int DURATION = 1800;
+    public final int DAMAGE= 20;
 
     public Laser2 (Context con, Cursor cursor) {
         super.con = con;
@@ -25,7 +25,7 @@ public class Laser2 extends Laser {
         width = screenWidth/4;
 
         super.image = new ImageView(con);
-        super.image.setImageResource(con.getResources().getIdentifier("laser1", "drawable", con.getPackageName()));
+        super.image.setImageResource(con.getResources().getIdentifier("laser2", "drawable", con.getPackageName()));
 
         super.warningDuration = WARNING_DURATION;
         super.duration = DURATION;

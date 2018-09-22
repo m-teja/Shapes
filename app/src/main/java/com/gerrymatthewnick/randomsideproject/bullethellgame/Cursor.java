@@ -15,7 +15,7 @@ public class Cursor {
 
     public final int CURSOR_IMAGE_Y_DISPLACEMENT = 200;
     public final int CURSOR_WIDTH = 32;
-    public int health = 100;
+    public int health = 1000;
     public boolean active;
 
     public Context con;
@@ -79,7 +79,9 @@ public class Cursor {
 
     public void init() {
         cursorImage = ((Activity)con).findViewById(R.id.cursor);
+
         healthbar = ((Activity)con).findViewById(R.id.healthBar);
+        healthbar.bringToFront();
         active = true;
     }
 

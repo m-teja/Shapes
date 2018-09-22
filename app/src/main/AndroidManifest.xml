@@ -20,7 +20,9 @@
         <activity android:name=".TwoPlayerGame" />
         <activity android:name=".InstructionsActivity" />
         <activity android:name=".SingleBullet" />
-        <activity android:name=".SingleCursor" />
+        <activity android:name=".SingleCursor"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
         <activity android:name=".PostGameScreen"></activity>
     </application>
 

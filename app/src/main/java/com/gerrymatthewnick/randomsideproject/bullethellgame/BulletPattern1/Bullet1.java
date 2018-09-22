@@ -11,7 +11,7 @@ import com.gerrymatthewnick.randomsideproject.bullethellgame.R;
 public class Bullet1 extends Projectile {
 
     public int bulletVelocity = 10;
-    public int bulletDamage = 50;
+    public int bulletDamage = 200;
 
     public Bullet1(Context con, Cursor cursor) {
         super.con = con;
