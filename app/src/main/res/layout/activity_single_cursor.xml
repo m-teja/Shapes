@@ -17,15 +17,4 @@
         android:layout_marginBottom="256dp"
         app:srcCompat="@drawable/cursor" />
 
-    <ProgressBar
-        android:id="@+id/healthBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="200dp"
-        android:layout_weight=".70"
-        android:max="1000"
-        android:progress="1000"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp" />
 </RelativeLayout>

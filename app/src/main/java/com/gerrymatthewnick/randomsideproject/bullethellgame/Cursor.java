@@ -28,7 +28,6 @@ public class Cursor {
 
     public Context con;
     public ImageView cursorImage;
-    public ProgressBar healthbar;
 
     public Cursor (Context con) {
         this.con = con;
@@ -79,10 +78,8 @@ public class Cursor {
     public void takeDamage(int damage) {
         health -= damage;
 
-        healthbar.bringToFront();
         background.getLayoutParams().height = (int)(screenHeight - (screenHeight * ((float)health/1000)));
 
-        healthbar.setProgress(healthbar.getProgress() - damage);
         if (health <= 0) {
             gameOver();
         }
@@ -122,7 +119,6 @@ public class Cursor {
         timer = new Chronometer(con);
         timer.start();
 
-        healthbar = ((Activity)con).findViewById(R.id.healthBar);
         active = true;
     }
 
