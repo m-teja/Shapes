@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -49,15 +50,16 @@ public class Projectile {
         float currentX = image.getX();
         float currentY = image.getY();
 
-        float differenceX = destinationX - currentX;
-        float differenceY = destinationY - currentY;
+        float differenceX = cursor.getX() - currentX;
+        float differenceY = cursor.getY() - currentY;
 
         float differenceXY = (float)Math.sqrt( Math.pow((differenceY), 2) + Math.pow((differenceX), 2));
 
         float cosAngle = (float)Math.acos(differenceY/differenceXY);
+        float sinAngle = (float)Math.asin(differenceX/differenceXY);
 
         currentVelocityY = (float)(Math.cos(cosAngle) * velocity);
-        currentVelocityX = (float)(Math.sin(cosAngle) * velocity);
+        currentVelocityX = (float)(Math.sin(sinAngle) * velocity);
     }
 
     private Runnable moveRunnable = new Runnable() {
@@ -69,8 +71,6 @@ public class Projectile {
             checkBounds();
             image.setY(image.getY() + currentVelocityY);
             image.setX(image.getX() + currentVelocityX);
-
-
 
 
 //TODO do something so it goes towards a specific position
@@ -90,9 +90,10 @@ public class Projectile {
 
     }
     public void checkBounds() {
-        if (image.getY() > screenHeight) {
+        if (image.getY() > screenHeight || image.getX() < 0 || image.getX() > screenWidth) {
             delete();
         }
+
     }
 
     //check if projectile is touching cursor

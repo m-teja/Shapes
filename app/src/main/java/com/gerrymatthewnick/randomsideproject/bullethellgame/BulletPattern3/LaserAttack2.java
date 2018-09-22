@@ -53,7 +53,7 @@ public class LaserAttack2 {
 
 
             Laser2 laser2 = new Laser2(con, cursor);
-            Log.d("test", Integer.toString(placement));
+
             laser2.init(placement, 0, screenWidth, screenHeight);
 
             if (active && singleCursorActive.getBoolean("singleCursorActive", true)) {
