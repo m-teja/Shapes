@@ -35,7 +35,7 @@ public class BulletAttackSpawn {
         int choice;
 
         do{
-            choice = (int)Math.floor(Math.random() * 4);
+            choice = (int)Math.floor(Math.random() * 5);
         }
         while (first == choice);
 
@@ -45,9 +45,10 @@ public class BulletAttackSpawn {
     Runnable runnableRepeatAttacks = new Runnable() {
         @Override
         public void run() {
-/*
+
             BulletAttack1 bulletAttack1;
             BulletAttack2 bulletAttack2;
+            BulletAttack3 bulletAttack3;
             LaserAttack1 laserAttack1;
             LaserAttack2 laserAttack2;
 
@@ -70,10 +71,11 @@ public class BulletAttackSpawn {
                 bulletAttack2 = new BulletAttack2(con, cursor);
                 bulletAttack2.initAttack();
             }
+            if (first == 4 || second == 4) {
+                bulletAttack3 = new BulletAttack3(con, cursor);
+                bulletAttack3.initAttack();
+            }
 
-*/
-            BulletAttack3 bulletAttack3 = new BulletAttack3(con, cursor);
-            bulletAttack3.initAttack();
             if (singleCursorActive.getBoolean("singleCursorActive", true)) {
                 attackSwitchDelay.postDelayed(runnableRepeatAttacks, 10000);
             }
