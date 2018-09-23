@@ -51,8 +51,12 @@ public class BulletAttack3 {
         Bullet3 middleLeftToMiddleRight = new Bullet3(con, cursor);
         middleLeftToMiddleRight.init(0, (screenHeight/2) - cursor.CURSOR_WIDTH/2, screenWidth, (screenHeight/2) - cursor.CURSOR_WIDTH/2);
 
+        Bullet3 middleRightToMiddleLeft = new Bullet3(con, cursor);
+        middleRightToMiddleLeft.init(screenWidth, (screenHeight/2) - cursor.CURSOR_WIDTH/2, 0, (screenHeight/2) - cursor.CURSOR_WIDTH/2);
+
         Bullet3 topMiddleToBottomMiddle = new Bullet3(con, cursor);
         topMiddleToBottomMiddle.init((screenWidth/2) - cursor.CURSOR_WIDTH/2, 0, (screenWidth/2) - cursor.CURSOR_WIDTH/2, screenHeight);
+
     }
 
     Runnable runnableStop = new Runnable() {
@@ -69,7 +73,7 @@ public class BulletAttack3 {
             attackPattern();
 
             if (active && singleCursorActive.getBoolean("singleCursorActive", true)) {
-                attackDelay.postDelayed(runnableAttack, 200);
+                attackDelay.postDelayed(runnableAttack, 400);
             }
             else {
                 attackDelay.removeCallbacksAndMessages(null);

@@ -72,10 +72,22 @@ public class Projectile {
             currentVelocityX = (float)(Math.sin(sinAngle) * velocity);
         }
         else if (differenceX == 0) {
-            currentVelocityY = velocity;
+
+            if (destinationY < currentY) {
+                currentVelocityY = -velocity;
+            }
+            else {
+                currentVelocityY = velocity;
+            }
         }
         else if (differenceY == 0) {
-            currentVelocityX = velocity;
+
+            if (destinationX < currentX) {
+                currentVelocityX = -velocity;
+            }
+            else {
+                currentVelocityX = velocity;
+            }
         }
 
     }
