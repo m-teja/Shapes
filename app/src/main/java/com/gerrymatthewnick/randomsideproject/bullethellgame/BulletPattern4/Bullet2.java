@@ -13,7 +13,7 @@ public class Bullet2 extends Projectile {
 
     public Handler deleteDelay;
 
-    public int bulletVelocity = 10;
+    public int bulletVelocity = 15;
     public int bulletDamage = 200;
     public final int REMOVE_DELAY = 10000;
 

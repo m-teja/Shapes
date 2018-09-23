@@ -91,8 +91,6 @@ public class BulletAttackSpawn {
                 checkDelay.removeCallbacksAndMessages(null);
                 attackSwitchDelay.removeCallbacksAndMessages(null);
             }
-
-
         }
     };
 

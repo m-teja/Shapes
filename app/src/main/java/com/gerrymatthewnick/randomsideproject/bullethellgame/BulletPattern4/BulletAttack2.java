@@ -21,8 +21,9 @@ public class BulletAttack2 {
     public Context con;
     public Cursor cursor;
 
-    public Handler attackDelay = new Handler();
     public Handler stopDelay = new Handler();
+
+    public Handler checkDelay = new Handler();
 
     public BulletAttack2(Context con, Cursor cursor) {
         this.con = con;
@@ -38,7 +39,6 @@ public class BulletAttack2 {
     }
     public void stop() {
         active = false;
-        attackDelay.removeCallbacksAndMessages(null);
     }
 
     public void attackPattern() {
@@ -61,6 +61,20 @@ public class BulletAttack2 {
         @Override
         public void run() {
             attackPattern();
+        }
+    };
+
+    Runnable checkActive = new Runnable() {
+        @Override
+        public void run() {
+
+            if (singleCursorActive.getBoolean("singleCursorActive", true)) {
+                checkDelay.postDelayed(checkActive, 500);
+            }
+            else {
+                checkDelay.removeCallbacksAndMessages(null);
+                stop();
+            }
         }
     };
 
