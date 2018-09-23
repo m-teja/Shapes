@@ -51,6 +51,7 @@ public class Cursor {
         cursorImage.setY(y - CURSOR_IMAGE_Y_DISPLACEMENT);
     }
 
+
     public void getScreenHeightWidth() {
         screenWidth = con.getResources().getDisplayMetrics().widthPixels;
         screenHeight = con.getResources().getDisplayMetrics().heightPixels;

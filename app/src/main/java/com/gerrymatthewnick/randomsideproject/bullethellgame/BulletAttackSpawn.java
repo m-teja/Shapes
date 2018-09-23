@@ -8,6 +8,7 @@ import com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern1.Bull
 import com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern2.LaserAttack1;
 import com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern3.LaserAttack2;
 import com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern4.BulletAttack2;
+import com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern5.BulletAttack3;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.gerrymatthewnick.randomsideproject.bullethellgame.SingleCursor.PREFERENCES_SINGLE_CURSOR_ACTIVE;
@@ -44,7 +45,7 @@ public class BulletAttackSpawn {
     Runnable runnableRepeatAttacks = new Runnable() {
         @Override
         public void run() {
-
+/*
             BulletAttack1 bulletAttack1;
             BulletAttack2 bulletAttack2;
             LaserAttack1 laserAttack1;
@@ -70,7 +71,9 @@ public class BulletAttackSpawn {
                 bulletAttack2.initAttack();
             }
 
-
+*/
+            BulletAttack3 bulletAttack3 = new BulletAttack3(con, cursor);
+            bulletAttack3.initAttack();
             if (singleCursorActive.getBoolean("singleCursorActive", true)) {
                 attackSwitchDelay.postDelayed(runnableRepeatAttacks, 10000);
             }
