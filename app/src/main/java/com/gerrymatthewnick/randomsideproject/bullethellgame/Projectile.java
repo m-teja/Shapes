@@ -48,6 +48,7 @@ public class Projectile {
 
     public void calcDifference() {
 
+
         float currentX = image.getX();
         float currentY = image.getY();
 
@@ -63,13 +64,22 @@ public class Projectile {
             differenceY = destinationY - currentY;
         }
 
-        float differenceXY = (float)Math.sqrt( Math.pow((differenceY), 2) + Math.pow((differenceX), 2));
+        if (differenceX != 0 && differenceY != 0) {
+            float differenceXY = (float)Math.sqrt( Math.pow((differenceY), 2) + Math.pow((differenceX), 2));
 
-        float cosAngle = (float)Math.acos(differenceY/differenceXY);
-        float sinAngle = (float)Math.asin(differenceX/differenceXY);
+            float cosAngle = (float)Math.acos(differenceY/differenceXY);
+            float sinAngle = (float)Math.asin(differenceX/differenceXY);
 
-        currentVelocityY = (float)(Math.cos(cosAngle) * velocity);
-        currentVelocityX = (float)(Math.sin(sinAngle) * velocity);
+            currentVelocityY = (float)(Math.cos(cosAngle) * velocity);
+            currentVelocityX = (float)(Math.sin(sinAngle) * velocity);
+        }
+        else if (differenceX == 0) {
+            currentVelocityY = velocity;
+        }
+        else if (differenceY == 0) {
+            currentVelocityX = velocity;
+        }
+
     }
 
     private Runnable moveRunnable = new Runnable() {
@@ -83,7 +93,6 @@ public class Projectile {
             image.setX(image.getX() + currentVelocityX);
 
 
-//TODO do something so it goes towards a specific position
             //Change this later for different activities
             if (active && singleCursorActive.getBoolean("singleCursorActiveActivity", true)) {
                 moveImage.postDelayed(moveRunnable, 20);

@@ -19,7 +19,8 @@ public class Cursor {
 
     public final int CURSOR_IMAGE_Y_DISPLACEMENT = 200;
     public final int CURSOR_WIDTH = 32;
-    public int health = 1000;
+    public final int STARTING_HEALTH = 100000;
+    public int health = STARTING_HEALTH;
     public boolean active;
 
     public ImageView background;
@@ -78,7 +79,7 @@ public class Cursor {
     public void takeDamage(int damage) {
         health -= damage;
 
-        background.getLayoutParams().height = (int)(screenHeight - (screenHeight * ((float)health/1000)));
+        background.getLayoutParams().height = (int)(screenHeight - (screenHeight * ((float)health/STARTING_HEALTH)));
 
         if (health <= 0) {
             gameOver();

@@ -21,7 +21,7 @@ public class SingleCursor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_cursor);
 
-        /*
+
         //For testing purposes
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
@@ -29,7 +29,7 @@ public class SingleCursor extends AppCompatActivity {
             return;
         }
         LeakCanary.install(getApplication());
-*/
+
         active = getSharedPreferences(PREFERENCES_SINGLE_CURSOR_ACTIVE, MODE_PRIVATE);
         activeEditor = active.edit();
 
@@ -91,6 +91,13 @@ public class SingleCursor extends AppCompatActivity {
         activeEditor.putBoolean("singleCursorActive", true);
         activeEditor.apply();
         super.onStart();
+    }
+
+    @Override
+    public void onBackPressed() {
+        activeEditor.putBoolean("singleCursorActive", false);
+        activeEditor.apply();
+        super.onBackPressed();
     }
 
     @Override

@@ -34,10 +34,11 @@ public class BulletAttack2 {
         getScreenHeightWidth();
         runnableAttack.run();
 
-        stopDelay.postDelayed(runnableStop, 10000);
+        stopDelay.postDelayed(runnableStop, 9000);
     }
     public void stop() {
         active = false;
+        attackDelay.removeCallbacksAndMessages(null);
     }
 
     public void attackPattern() {
