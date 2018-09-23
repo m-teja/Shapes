@@ -28,7 +28,7 @@ public class Bullet3 extends Projectile {
         rl = ((Activity)con).findViewById(R.id.rlSingleCursor);
 
         super.image = new ImageView(con);
-        super.image.setImageResource(con.getResources().getIdentifier("bullet1", "drawable", con.getPackageName()));
+        super.image.setImageResource(con.getResources().getIdentifier("bullet3", "drawable", con.getPackageName()));
 
         setImage();
         super.velocity = bulletVelocity;
