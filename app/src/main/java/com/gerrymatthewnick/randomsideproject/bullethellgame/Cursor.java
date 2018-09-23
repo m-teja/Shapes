@@ -2,14 +2,11 @@ package com.gerrymatthewnick.randomsideproject.bullethellgame;
 
 import android.app.Activity;
 import android.content.Context;
-
 import android.content.Intent;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.support.v4.view.ViewCompat;
 import android.widget.Chronometer;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 public class Cursor {

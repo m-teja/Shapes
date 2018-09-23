@@ -44,7 +44,7 @@ public class LaserAttack1 {
         public void run() {
             Laser1 laser1 = new Laser1(con, cursor);
 
-            laser1.init((int)cursor.getX() + (cursor.CURSOR_WIDTH/2), 0, screenHeight);
+            laser1.init((int)cursor.getX() + (cursor.CURSOR_WIDTH/2), 0, screenHeight, 500, screenHeight);
 
             if (active && singleCursorActive.getBoolean("singleCursorActive", true)) {
                 attackDelay.postDelayed(runnableAttack, 1000);

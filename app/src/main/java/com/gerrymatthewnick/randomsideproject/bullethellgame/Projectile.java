@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.Handler;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -47,7 +46,6 @@ public class Projectile {
     }
 
     public void calcDifference() {
-
 
         float currentX = image.getX();
         float currentY = image.getY();

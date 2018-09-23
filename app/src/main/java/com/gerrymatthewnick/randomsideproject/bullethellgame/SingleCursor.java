@@ -1,8 +1,8 @@
 package com.gerrymatthewnick.randomsideproject.bullethellgame;
 
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 
 import com.squareup.leakcanary.LeakCanary;

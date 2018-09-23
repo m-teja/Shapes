@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
 
-import com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern1.Bullet1;
 import com.gerrymatthewnick.randomsideproject.bullethellgame.Cursor;
 
 import static android.content.Context.MODE_PRIVATE;

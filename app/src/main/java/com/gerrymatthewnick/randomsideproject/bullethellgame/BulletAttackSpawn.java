@@ -97,7 +97,6 @@ public class BulletAttackSpawn {
     //periodically start different attack patterns
     public void startSpawn() {
 
-
         //Check if activity is still collide
         singleCursorActive = con.getSharedPreferences(PREFERENCES_SINGLE_CURSOR_ACTIVE, MODE_PRIVATE);
 
@@ -108,6 +107,3 @@ public class BulletAttackSpawn {
         checkActive.run();
     }
 }
-//TODO make a timed attack program
-//TODO bulletpattern3 4 1/4 width lasers memory
-//TODO tracking missles

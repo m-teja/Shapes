@@ -2,6 +2,7 @@ package com.gerrymatthewnick.randomsideproject.bullethellgame;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.os.Handler;
 import android.util.Log;
@@ -32,6 +33,9 @@ public class Laser {
     public int yTop;
     public int yHeight;
 
+    public int destinationX;
+    public int destinationY;
+
     public int warningDuration;
     public int duration;
     public int warningWidth;
@@ -49,7 +53,7 @@ public class Laser {
         image.setX(xLeft - warningWidth/2);
         image.setY(yTop);
 
-        image.setAdjustViewBounds(true);
+        //image.setAdjustViewBounds(true);
         image.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
         image.getLayoutParams().height = yHeight;
@@ -61,6 +65,7 @@ public class Laser {
         imageSpawnAnimation();
 
     }
+
     public void imageSpawnAnimation() {
         int repeatCount = 8;
 

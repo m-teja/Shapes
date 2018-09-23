@@ -3,7 +3,6 @@ package com.gerrymatthewnick.randomsideproject.bullethellgame.BulletPattern3;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
-import android.util.Log;
 
 import com.gerrymatthewnick.randomsideproject.bullethellgame.Cursor;
 

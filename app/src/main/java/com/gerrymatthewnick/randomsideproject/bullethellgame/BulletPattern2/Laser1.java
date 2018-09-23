@@ -21,7 +21,7 @@ public class Laser1 extends Laser {
         super.cursor = cursor;
     }
 
-    public void init(int xStart, int yStart, int screenHeight) {
+    public void init(int xStart, int yStart, int screenHeight, int destinationX, int destinationY) {
 
         super.image = new ImageView(con);
         super.image.setImageResource(con.getResources().getIdentifier("laser1", "drawable", con.getPackageName()));
@@ -35,6 +35,10 @@ public class Laser1 extends Laser {
         super.xWidth = WIDTH;
         super.yTop = yStart;
         super.yHeight = screenHeight;
+
+        super.destinationX = destinationX;
+        super.destinationY = destinationY;
+
         super.rl = ((Activity)con).findViewById(R.id.rlSingleCursor);
 
         super.setImage();
