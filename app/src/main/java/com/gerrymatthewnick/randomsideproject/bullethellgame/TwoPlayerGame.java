@@ -29,7 +29,7 @@ public class TwoPlayerGame extends AppCompatActivity {
     }
 
     public void readyPlayer() {
-        
+
     }
 
     @Override
