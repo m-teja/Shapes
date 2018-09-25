@@ -112,3 +112,5 @@ public class BulletAttackSpawn {
         checkActive.run();
     }
 }
+//TODO memory leak in bullets
+//TODO bullet pattern 6 bouncing bullets
