@@ -3,6 +3,7 @@ package com.gerrymatthewnick.randomsideproject.bullethellgame;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
+import android.widget.ImageView;
 
 public class TwoPlayerGame extends AppCompatActivity {
 
@@ -25,6 +26,7 @@ public class TwoPlayerGame extends AppCompatActivity {
     }
 
     public void readyBullets() {
+        ImageView background = findViewById(R.id.preStartBulletsSide);
 
     }
 
