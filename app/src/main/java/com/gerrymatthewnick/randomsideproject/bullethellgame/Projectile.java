@@ -89,7 +89,6 @@ public class Projectile {
                 currentVelocityX = velocity;
             }
         }
-
     }
 
     private Runnable moveRunnable = new Runnable() {
